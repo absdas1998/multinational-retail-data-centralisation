@@ -2,7 +2,7 @@ import sqlalchemy
 import pandas as pd
 import tabula
 import requests
-import awscliaws configure
+
 import boto3
 
 class DataExtractor:
@@ -15,15 +15,9 @@ class DataExtractor:
             return data
         
     def retrieve_pdf_data(self, link):
-        tables = tabula.read_pdf(link, pages='all')
-        dataframes = []
-    
-        for table in tables:
-            dataframe = pd.DataFrame(table)
-            dataframes.append(dataframe)
-        
-        result_df = pd.concat(dataframes, ignore_index=True)
-        return result_df
+        credit_card_df = tabula.read_pdf(link,pages='all')
+        credit_card_df = pd.concat(credit_card_df)
+        return credit_card_df
     
     
     def list_number_of_stores(self, endpoint, headers):

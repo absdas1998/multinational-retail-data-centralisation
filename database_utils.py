@@ -1,4 +1,3 @@
-
 import yaml
 import sqlalchemy
 import pandas as pd
@@ -51,23 +50,7 @@ class DatabaseConnector:
         engine.dispose()
 
         
-# host = 'localhost'
-# port = 5433
-# database = 'sales_data'  
-# username = 'postgres'
-# password = 'Pw185253'
-# connector = DatabaseConnector(host, port, database, username, password)
-# read_creds = connector.read_db_creds("db_creds.yaml")
-# init_db_engine = connector.init_db_engine(read_creds)
-# list_tables = connector.list_db_tables(init_db_engine)
-# print(list_tables)
-# user_data = "legacy_users"
-# extractor = DataExtractor()
-# legacy_users_data = extractor.read_rds_tables(init_db_engine, user_data)
-
-# user_cleaner = DataCleaning()
-# clean_data = user_cleaner.clean_user_data(legacy_users_data)
-# connector.upload_to_db(clean_data, "dim_users")    
+   
 
 
         
