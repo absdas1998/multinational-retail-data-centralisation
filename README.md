@@ -12,7 +12,7 @@ The multinational retail data centralisation project is a comprehensive data man
 ## Extract and clean the data from the data sources 
 In this section, we will discuss how to extract data from various data sources, clean it, and store it in the `sales_data` database.
 
-Step 1: First, create a `db_creds.yaml` file containing the database credentials for the AWS RDS database
+Step 1: First, create a db_creds.yaml file containing the database credentials for the AWS RDS database
 
 Step 2: Create a DatabaseConnector class, we will implement several essential methods to facilitate database interactions. Firstly, the read_db_creds method will be responsible for reading and retrieving database credentials stored in the db_creds.yaml file, returning them in dictionary form. Secondly, the init_db_engine method will be employed to establish and furnish an SQLAlchemy database engine using the extracted credentials. Additionally, we will utilize the list_db_tables method to compile a list of all available tables within the database, aiding in the identification of specific tables for data extraction. Lastly, we will design an upload_to_db method, enabling the seamless transfer of data from a Pandas DataFrame into the database.
 
@@ -34,6 +34,7 @@ Step 10: The date and time data, stored in JSON format on S3, can be extracted a
 
 
 ## Create the Database Schema
+
 
 ## Querying the Data 
 
