@@ -1,4 +1,3 @@
-
 import yaml
 import sqlalchemy
 import pandas as pd
@@ -12,6 +11,7 @@ from data_extraction import DataExtractor
 from data_cleaning import DataCleaning
 from database_utils import DatabaseConnector
 
+
 # Fill in details with your own values for connector class
 host = 'XXXX'
 port = 1234
@@ -19,10 +19,12 @@ database = 'XXXX'
 username = 'XXXXX'
 password = 'XXXX'
 
+
 # Create classes for database connector, extractor and cleaner
 connector = DatabaseConnector(host, port, database, username, password)
 extractor = DataExtractor()
 cleaner = DataCleaning()
+
 
 # Create dim_users table
 read_creds = connector.read_db_creds("db_creds.yaml")
@@ -56,6 +58,7 @@ product_weights_data = extractor.extract_from_s3("s3://data-handling-public/prod
 converted_product_weight_data = cleaner.covert_product_weights(product_weights_data)
 cleaned_product_data = cleaner.clean_products_data(converted_product_weight_data)
 connector.upload_to_db(cleaned_product_data, "dim_products")
+
 
 # Create orders_table table 
 orders_data = "orders_table"

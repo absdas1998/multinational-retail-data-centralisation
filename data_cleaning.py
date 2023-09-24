@@ -10,6 +10,7 @@ from dateutil.parser import parse
 class DataCleaning:
 
     def clean_user_data(self, df):
+        """Clean user data by removing NaN values and filtering invalid countries."""
         df = df.dropna()
         df = df[df['country'] != 'NULL']
         df = df[~df['country'].str.contains('\d')]
@@ -18,6 +19,7 @@ class DataCleaning:
 
 
     def clean_card_data(self, df):
+        """Clean card data by removing NaN values and filtering non-numeric card numbers."""
         df = df.dropna()
         df.loc[:, 'card_number'] = df['card_number'].apply(lambda x: re.sub(r'\?', '', str(x)))
         df = df[df['card_number'].str.isnumeric()]
@@ -25,6 +27,7 @@ class DataCleaning:
         
     
     def covert_product_weights(self, df):
+       """Convert product weights to kilograms in the DataFrame."""
        def convert_to_kg(weight):
             weight = str(weight).lower()
             if 'kg' in weight:
@@ -58,6 +61,7 @@ class DataCleaning:
 
 
     def clean_products_data(self, df):
+        """Clean product data by validating UUIDs, removing digits, handling NaN values, removing duplicates, and standardizing date formats."""
         df["uuid"] = df["uuid"].apply(self._check_user_uuid)
         df = df[~df['removed'].str.contains(r'\d', na=False)]
         df = df.dropna()
@@ -67,11 +71,13 @@ class DataCleaning:
         
     
     def clean_orders_data(self, df):
+        """Clean orders data by removing specified columns."""
         columns_to_remove = ['first_name', 'last_name', '1']
         df = df.drop(columns_to_remove, axis=1)
         return df
 
     def clean_store_data(self, df):
+        """Clean store data by filtering invalid country codes, fixing continent codes, cleaning staff numbers, and standardizing opening date formats."""
         df = df.drop(df[df['country_code'].str.len() > 2].index)
         df['continent'] = df['continent'].replace('ee', '', regex=True)
         df['staff_numbers'] = df['staff_numbers'].str.replace(r'\D', '', regex=True)
@@ -83,6 +89,7 @@ class DataCleaning:
 
 
     def clean_date_details(self, df):
+        """Clean date details by removing NaN values and filtering non-numeric date components."""
         df['month'] = pd.to_numeric(df['month'], errors='coerce')
         df['year'] = pd.to_numeric(df['year'], errors='coerce')
         df['day'] = pd.to_numeric(df['day'], errors='coerce')
