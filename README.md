@@ -10,7 +10,7 @@
 The multinational retail data centralisation project is a comprehensive data management and integration initiative designed to efficiently collect, process, and store diverse datasets from various sources. The primary goal of this project is to create a robust and organized data infrastructure, enabling informed decision-making and data-driven insights for a range of business needs.
 
 ## Extract and clean the data from the data sources 
-In this section, we will discuss how to extract data from various data sources, clean it, and store it in the `sales_data` database.
+In this section, we will discuss how I created the classes in order to extract data from various data sources, clean it, and store it in the `sales_data` database. Please find my scripts in the repository. 
 
 Step 1: First, create a db_creds.yaml file containing the database credentials for the AWS RDS database
 
@@ -34,7 +34,24 @@ Step 10: The date and time data, stored in JSON format on S3, can be extracted a
 
 
 ## Create the Database Schema
+In this section I will discuss how I created the database schema as shown in my database_schema.sql file in this repository
 
+In the process of creating our database schema, we're adjusting data types across various tables to align them with the desired formats. For the 'orders_table,' we're transitioning columns like 'date_uuid,' 'user_uuid,' 'card_number,' 'store_code,' 'product_code,' and 'product_quantity' to their appropriate data types. In the 'dim_user_table,' we're ensuring 'first_name' and 'last_name' become VARCHAR(255) and 'date_of_birth' converts to DATE. In the 'store_details_table,' we're merging duplicate latitude columns and altering data types accordingly. For the 'dim_products' table, we're cleansing the 'product_price,' 'weight,' 'EAN,' 'product_code,' 'date_added,' 'uuid,' 'still_available,' and introducing a 'weight_class' column. Adjusting data types extends to the 'dim_date_times' and 'dim_card_details' tables as well. Following this, primary keys are added to each 'dim' table, and foreign key constraints are established in the 'orders_table' to link these primary keys. This finalizes the creation of our star-based database schema, setting the stage for efficient data analysis.
 
 ## Querying the Data 
+Now that all the previous steps have been completed create a querying_data.sql file which contains the queries you want to run to investigate the data. After running this querying_data.sql you should be able to see the answers to your investigations. The investigations I conducted are listed below:
+
+How many stores does the business have and in which countries?
+Which locations currently have the most stores?
+Which months produce the average highest cost of sales typically?
+How many sales are coming from online?
+What percentage of sales come through each type of store?
+Which month in each year produced the highest cost of sales?
+What is our staff headcount?
+Which German store type is selling the most?
+How quickly is the company making sales?
+
+
+
+
 
