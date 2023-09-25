@@ -41,15 +41,15 @@ In the process of creating our database schema, we're adjusting data types acros
 ## Querying the Data 
 Now that all the previous steps have been completed create a querying_data.sql file which contains the queries you want to run to investigate the data. After running this querying_data.sql you should be able to see the answers to your investigations. The investigations I conducted are listed below:
 
-How many stores does the business have and in which countries?
-Which locations currently have the most stores?
-Which months produce the average highest cost of sales typically?
-How many sales are coming from online?
-What percentage of sales come through each type of store?
-Which month in each year produced the highest cost of sales?
-What is our staff headcount?
-Which German store type is selling the most?
-How quickly is the company making sales?
+- How many stores does the business have and in which countries?
+- Which locations currently have the most stores?
+- Which months produce the average highest cost of sales typically?
+- How many sales are coming from online?
+- What percentage of sales come through each type of store?
+- Which month in each year produced the highest cost of sales?
+- What is our staff headcount?
+- Which German store type is selling the most?
+- How quickly is the company making sales?
 
 
 
